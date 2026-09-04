@@ -79,12 +79,42 @@
         <a class="btn btn-primary" href="#join">Join the Community</a>
         <a class="btn btn-outline" href="#connect">See Where We Are Online</a>
       </div>
-      <ul class="hero-tags" aria-label="What ambassadors do">
+      <ul class="sr-only" aria-label="What ambassadors do">
         <li>Campus Tours</li>
         <li>Open Days</li>
         <li>Peer Mentorship</li>
         <li>Content Creation</li>
       </ul>
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="hero-marquee-track">
+          <span class="tag-pill">Campus Tours</span>
+          <span class="tag-pill">Open Days</span>
+          <span class="tag-pill">Peer Mentorship</span>
+          <span class="tag-pill">Content Creation</span>
+          <span class="tag-pill">Campus Tours</span>
+          <span class="tag-pill">Open Days</span>
+          <span class="tag-pill">Peer Mentorship</span>
+          <span class="tag-pill">Content Creation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AT A GLANCE -->
+  <section class="stat-band" aria-label="At a glance">
+    <div class="wrap stat-band-inner">
+      <div class="stat" data-count-to="6">
+        <span class="stat-num">0</span>
+        <span class="stat-label">Ambassador Programs</span>
+      </div>
+      <div class="stat" data-count-to="4">
+        <span class="stat-num">0</span>
+        <span class="stat-label">Official Channels</span>
+      </div>
+      <div class="stat" data-count-to="2026">
+        <span class="stat-num">0</span>
+        <span class="stat-label">Next Open Day Series</span>
+      </div>
     </div>
   </section>
 
@@ -284,6 +314,14 @@
     </div>
   </section>
 
+  <!-- PULL QUOTE BREAK -->
+  <section class="pull-quote">
+    <div class="wrap">
+      <p class="pull-quote-mark" aria-hidden="true">&ldquo;</p>
+      <p class="pull-quote-text">We are the first face of Sunway University — before the brochure, before the campus tour, before the offer letter.</p>
+    </div>
+  </section>
+
   <!-- VOICES -->
   <section class="section section-alt" id="voices">
     <div class="wrap">
@@ -293,19 +331,34 @@
       </div>
 
       <!-- Placeholder quotes — replace with real ambassador testimonials once collected. -->
-      <div class="quote-grid">
-        <blockquote class="quote-card">
-          <p>"The first tour I ran, I was more nervous than the visitors. By the third one, I understood the campus better than I did as a first-year."</p>
-          <footer>SAA Ambassador</footer>
-        </blockquote>
-        <blockquote class="quote-card">
-          <p>"Half the job is just remembering what it felt like to not know anything about Sunway yet, and answering from there."</p>
-          <footer>SAA Ambassador</footer>
-        </blockquote>
-        <blockquote class="quote-card">
-          <p>"It's the one commitment on campus where the people you meet at an open day sometimes message you a year later to say they enrolled."</p>
-          <footer>SAA Ambassador</footer>
-        </blockquote>
+      <div class="quote-carousel" data-carousel>
+        <div class="quote-track">
+          <blockquote class="quote-card">
+            <p>"The first tour I ran, I was more nervous than the visitors. By the third one, I understood the campus better than I did as a first-year."</p>
+            <footer>SAA Ambassador</footer>
+          </blockquote>
+          <blockquote class="quote-card">
+            <p>"Half the job is just remembering what it felt like to not know anything about Sunway yet, and answering from there."</p>
+            <footer>SAA Ambassador</footer>
+          </blockquote>
+          <blockquote class="quote-card">
+            <p>"It's the one commitment on campus where the people you meet at an open day sometimes message you a year later to say they enrolled."</p>
+            <footer>SAA Ambassador</footer>
+          </blockquote>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous testimonial">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel-dots" role="tablist" aria-label="Testimonial navigation">
+            <button class="carousel-dot" type="button" data-carousel-dot="0" role="tab" aria-label="Testimonial 1" aria-selected="true"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot="1" role="tab" aria-label="Testimonial 2" aria-selected="false"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot="2" role="tab" aria-label="Testimonial 3" aria-selected="false"></button>
+          </div>
+          <button class="carousel-btn" type="button" data-carousel-next aria-label="Next testimonial">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -325,15 +378,27 @@
 
       <div class="moments-grid">
         <figure class="moment-card moment-a">
+          <span class="moment-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12M4 21h16M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
           <figcaption>Open Day</figcaption>
         </figure>
         <figure class="moment-card moment-b">
+          <span class="moment-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
           <figcaption>Campus Tour Series</figcaption>
         </figure>
         <figure class="moment-card moment-c">
+          <span class="moment-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12Zm0 0c-4 0-7.5 2-7.5 5v3h15v-3c0-3-3.5-5-7.5-5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
           <figcaption>Ambassador Onboarding</figcaption>
         </figure>
         <figure class="moment-card moment-d">
+          <span class="moment-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13M3 21h18M7 21v-5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
           <figcaption>Education Fairs</figcaption>
         </figure>
       </div>
