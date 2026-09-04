@@ -11,6 +11,7 @@ index.html        Single-page site (About, What We Do, Join Us, Moments, Connect
 css/styles.css     All styling — colors/fonts live in the CSS variables at the top
 js/main.js         Nav, scroll-spy, carousel, tilt/parallax/marquee, count-up, scroll-reveal
 assets/            Real SAA logo (logo.png) and favicon/icon mark (favicon.png)
+programs/          Six standalone program detail pages, linked from the What We Do dropdown
 .nojekyll          Tells GitHub Pages to serve the repo as-is, skip Jekyll processing
 ```
 
@@ -73,10 +74,12 @@ so it doesn't read as a flat template:
   pillars and What We Do program cards, and a magnetic pull on the primary
   CTAs — both gated to fine-pointer, motion-safe devices only (`.no-tilt`
   class on `<body>` is the CSS fallback for touch/reduced-motion).
-- **"What We Do" dropdown → real anchors**: each of the six dropdown items
-  now links to its own program card (`#campus-tours`, `#open-days-fairs`,
-  etc.) instead of all six pointing at the section top. Landing on a card
-  gives it a brief highlight flash via `:target` CSS, no JS required.
+- **"What We Do" dropdown → real pages**: each of the six dropdown items
+  links to its own standalone page under `programs/` (not just an anchor —
+  see "Program detail pages" below). The homepage cards each got a
+  "Learn more →" link too. On the homepage itself, the `#campus-tours`-style
+  ids on each `.program-card` are still there and get a `:target` highlight
+  flash if something links to them directly.
 - **FAQ accordion** (Join Us): five questions, single-open accordion using
   a `grid-template-rows: 0fr → 1fr` transition (no fixed-height hacks). All
   five answers restate facts already on the page — process steps, real
@@ -90,6 +93,35 @@ so it doesn't read as a flat template:
 - **"Applications Open" status pill** in the header, linking straight to
   the real volunteer form — text collapses to just the dot under 900px to
   save header space.
+
+## Program detail pages (`programs/`)
+
+Each of the six What We Do items now has its own real page —
+`programs/campus-tours.html`, `open-days-fairs.html`, `peer-mentorship.html`,
+`digital-content.html`, `orientation-support.html`, `community-events.html`
+— rather than all six pointing at one shared section. Each page has:
+
+- A hero (kicker + title + the same lead line as the homepage card) and a
+  breadcrumb back to `#what-we-do`.
+- 2–3 paragraphs of expanded copy plus a short bullet list — all of it
+  elaboration on facts already true of the role (what a tour generally
+  covers, why the program exists), not new specifics that would need
+  verification. Nothing here asserts a number, schedule, or claim that
+  isn't already on the homepage.
+- A **social callout card** linking out to Instagram, LinkedIn, and
+  Xiaohongshu, framed honestly as "specific posts aren't linked here yet."
+  **This is deliberately not a fake embed** — real Instagram/LinkedIn post
+  embeds require actual post URLs per program, which nobody has supplied.
+  When those exist, swap the `social-callout-links` block for the
+  platform's real oEmbed/blockquote embed code (Instagram's official embed
+  script, `platform.js`, works fine on a static site like this).
+- A CTA back to the volunteer form, and a "related programs" grid linking
+  to the other five.
+
+All six pages share the same header/footer markup as `index.html` (no
+templating system — this is still a build-step-free static site, so it's
+duplicated by hand). If site-wide nav or footer content changes, it needs
+updating in all seven files (`index.html` + the six `programs/*.html`).
 
 ## Crawl findings (folded in from HANDOFF.md)
 
