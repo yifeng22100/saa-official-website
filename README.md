@@ -73,6 +73,23 @@ so it doesn't read as a flat template:
   pillars and What We Do program cards, and a magnetic pull on the primary
   CTAs — both gated to fine-pointer, motion-safe devices only (`.no-tilt`
   class on `<body>` is the CSS fallback for touch/reduced-motion).
+- **"What We Do" dropdown → real anchors**: each of the six dropdown items
+  now links to its own program card (`#campus-tours`, `#open-days-fairs`,
+  etc.) instead of all six pointing at the section top. Landing on a card
+  gives it a brief highlight flash via `:target` CSS, no JS required.
+- **FAQ accordion** (Join Us): five questions, single-open accordion using
+  a `grid-template-rows: 0fr → 1fr` transition (no fixed-height hacks). All
+  five answers restate facts already on the page — process steps, real
+  form/Instagram links — nothing new asserted.
+- **Sticky mini-CTA bar**: appears once you scroll past the hero, hides
+  near the footer, dismissible for the session (`sessionStorage`).
+- **Moments lightbox**: click/Enter on a Moments card to see it enlarged;
+  works today with the placeholder gradients and will show real photos
+  automatically once `<img>` tags replace them (see "Content still to
+  replace" below).
+- **"Applications Open" status pill** in the header, linking straight to
+  the real volunteer form — text collapses to just the dot under 900px to
+  save header space.
 
 ## Crawl findings (folded in from HANDOFF.md)
 
