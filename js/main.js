@@ -30,9 +30,29 @@
     });
   }
 
+  // Nav dropdown ("What We Do" programs)
+  var dropdownCarets = Array.prototype.slice.call(document.querySelectorAll(".nav-caret"));
+  dropdownCarets.forEach(function (caret) {
+    var item = caret.closest(".nav-item");
+    if (!item) return;
+    caret.addEventListener("click", function (e) {
+      e.preventDefault();
+      var isOpen = item.classList.toggle("open");
+      caret.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+  document.addEventListener("click", function (e) {
+    document.querySelectorAll(".nav-item.open").forEach(function (item) {
+      if (item.contains(e.target)) return;
+      item.classList.remove("open");
+      var c = item.querySelector(".nav-caret");
+      if (c) c.setAttribute("aria-expanded", "false");
+    });
+  });
+
   // Active nav link on scroll
   var sections = Array.prototype.slice.call(document.querySelectorAll("main section[id]"));
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".main-nav a"));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".main-nav a.nav-link"));
   if (sections.length && navLinks.length && "IntersectionObserver" in window) {
     var byId = {};
     navLinks.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });

@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunway Admissions Ambassadors (SAA)</title>
 <meta name="description" content="Sunway Admissions Ambassadors (SAA) is the student-led community that welcomes, guides, and represents Sunway University to prospective students.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23861F35'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23F4E7C1' text-anchor='middle'%3ESA%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Sunway Admissions Ambassadors (SAA)">
+<meta property="og:description" content="The student-led community that welcomes, guides, and represents Sunway University to prospective students.">
+<meta property="og:image" content="assets/logo.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,10 +23,7 @@
   <div class="wrap header-inner">
     <a class="brand" href="#top" aria-label="Sunway Admissions Ambassadors home">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" width="36" height="36">
-          <rect x="1" y="1" width="46" height="46" rx="11" fill="#861F35"/>
-          <text x="24" y="31" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#F4E7C1">SA</text>
-        </svg>
+        <img class="brand-mark-img" src="assets/favicon.png" width="36" height="36" alt="">
       </span>
       <span class="brand-text">
         <strong>Sunway Admissions</strong>
@@ -31,12 +32,25 @@
     </a>
 
     <nav class="main-nav" id="mainNav" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#what-we-do">What We Do</a>
-      <a href="#open-day">Open Day Series</a>
-      <a href="#join">Join Us</a>
-      <a href="#moments">Moments</a>
-      <a href="#connect">Connect</a>
+      <a class="nav-link" href="#about">About</a>
+      <div class="nav-item has-dropdown">
+        <a class="nav-link" href="#what-we-do">What We Do</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-label="Show What We Do programs">
+          <svg viewBox="0 0 12 8" width="10" height="7"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown">
+          <a href="#what-we-do">Campus Tours</a>
+          <a href="#what-we-do">Open Days &amp; Fairs</a>
+          <a href="#what-we-do">Peer Mentorship</a>
+          <a href="#what-we-do">Digital Content</a>
+          <a href="#what-we-do">Orientation Support</a>
+          <a href="#what-we-do">Community Events</a>
+        </div>
+      </div>
+      <a class="nav-link" href="#open-day">Open Day Series</a>
+      <a class="nav-link" href="#join">Join Us</a>
+      <a class="nav-link" href="#moments">Moments</a>
+      <a class="nav-link" href="#connect">Connect</a>
     </nav>
 
     <div class="header-actions">
@@ -381,10 +395,7 @@
   <div class="wrap footer-inner">
     <div class="footer-brand">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" width="32" height="32">
-          <rect x="1" y="1" width="46" height="46" rx="11" fill="#F4E7C1"/>
-          <text x="24" y="31" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#861F35">SA</text>
-        </svg>
+        <img class="brand-mark-img" src="assets/favicon.png" width="32" height="32" alt="">
       </span>
       <p>Sunway Admissions Ambassadors is a student-led community supporting Sunway University's admissions engagement, tours, and events.</p>
     </div>

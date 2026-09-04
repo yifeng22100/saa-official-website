@@ -10,10 +10,11 @@ open days, and mentorship.
 index.html        Single-page site (About, What We Do, Join Us, Moments, Connect)
 css/styles.css     All styling — colors/fonts live in the CSS variables at the top
 js/main.js         Mobile nav, scroll-spy nav highlighting, scroll-reveal animations
+assets/            Real SAA logo (logo.png) and favicon/icon mark (favicon.png)
 ```
 
-No build step or dependencies. Fonts load from Google Fonts; everything else
-(icons, logo mark) is inline SVG.
+No build step or dependencies. Fonts load from Google Fonts; the real logo
+lives in `assets/`, everything else (nav icons, social icons) is inline SVG.
 
 ## Running locally
 
@@ -78,11 +79,13 @@ the original handoff and applied what could be verified:
 The site ships with clearly-scoped placeholders so the structure and design
 are ready to go live the moment real content is dropped in:
 
-- **`css/styles.css` `:root`** — palette is a Sunway-red-inspired placeholder
-  (`--maroon-*`, `--gold-*`). Crawling turned up no reliable brand hex
-  values (see above) — swap for the official brand colors and an actual
-  SVG/PNG logo (in place of the inline "SA" monogram) once a real asset or
-  brand guide is available.
+- **`css/styles.css` `:root`** — palette is still a Sunway-red-inspired
+  placeholder (`--maroon-*`, `--gold-*`). The real logo (`assets/logo.png`,
+  `assets/favicon.png`) is now in use in the header/footer/favicon, but
+  it's monochrome black-on-white ink, so it doesn't settle the brand color
+  question — crawling turned up no reliable hex values either (see above).
+  Swap the palette for the official brand colors once a brand guide or a
+  colored logo variant is available.
 - **`#voices` section** — sample testimonial quotes. Replace with real
   ambassador quotes once collected.
 - **`#moments` section** — gradient placeholder cards standing in for a
