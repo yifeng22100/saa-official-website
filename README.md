@@ -45,6 +45,14 @@ are ready to go live the moment real content is dropped in:
 - **Footer contact** — no official contact email was available; currently
   points visitors to Instagram DM / Linktree. Replace the `TODO` in
   `index.html` once one exists.
+- **`#open-day` section** — a reusable template for the Sunway Education
+  Open Day Series, refreshed each intake. Update the `Series` / `Date` /
+  `Venue` fields in the `.band-meta` block, and swap the "Go to Sunway
+  Admissions" link's placeholder URL (`sunway.edu.my`) for the exact Open
+  Day registration page once one exists. This section deliberately does
+  **not** capture attendee leads on this site — SAA's own site recruits
+  ambassadors to staff the event; the actual event registration is owned
+  and hosted by Sunway Admissions/Marketing elsewhere.
 - **Social links** — already wired to the real, current channels:
   [Instagram](https://www.instagram.com/sunway_saa),
   [LinkedIn](https://www.linkedin.com/company/sunway-admissions-ambassador/),

@@ -53,7 +53,7 @@
 
   // Scroll-reveal for cards
   var revealTargets = document.querySelectorAll(
-    ".pillar, .program-card, .process li, .quote-card, .moment-card, .social-card"
+    ".pillar, .program-card, .process li, .quote-card, .moment-card, .social-card, .audience-card"
   );
   revealTargets.forEach(function (el) { el.setAttribute("data-reveal", ""); });
 
