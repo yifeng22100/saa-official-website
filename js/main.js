@@ -236,4 +236,108 @@
       });
     });
   }
+
+  // FAQ accordion (Join Us)
+  var faqItems = Array.prototype.slice.call(document.querySelectorAll(".faq-item"));
+  faqItems.forEach(function (item) {
+    var btn = item.querySelector(".faq-question");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var isOpen = item.classList.contains("open");
+      faqItems.forEach(function (other) {
+        other.classList.remove("open");
+        var otherBtn = other.querySelector(".faq-question");
+        if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+      });
+      if (!isOpen) {
+        item.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  // Sticky mini-CTA bar
+  var stickyCta = document.getElementById("stickyCta");
+  if (stickyCta) {
+    var stickyDismissed = false;
+    try { stickyDismissed = sessionStorage.getItem("saa-sticky-cta-dismissed") === "1"; } catch (e) {}
+    var heroEl = document.querySelector(".hero");
+    var footerEl = document.querySelector(".site-footer");
+    var stickyCloseBtn = stickyCta.querySelector(".sticky-cta-close");
+    var stickyRaf = null;
+
+    var updateSticky = function () {
+      if (stickyDismissed) return;
+      var pastHero = heroEl ? window.scrollY > heroEl.offsetHeight : window.scrollY > 400;
+      var nearFooter = footerEl ? footerEl.getBoundingClientRect().top < window.innerHeight : false;
+      stickyCta.hidden = false;
+      stickyCta.classList.toggle("visible", pastHero && !nearFooter);
+    };
+    var onScrollSticky = function () {
+      if (stickyRaf) return;
+      stickyRaf = requestAnimationFrame(function () { updateSticky(); stickyRaf = null; });
+    };
+
+    if (!stickyDismissed) {
+      document.addEventListener("scroll", onScrollSticky, { passive: true });
+      updateSticky();
+    }
+    if (stickyCloseBtn) {
+      stickyCloseBtn.addEventListener("click", function () {
+        stickyCta.classList.remove("visible");
+        stickyDismissed = true;
+        try { sessionStorage.setItem("saa-sticky-cta-dismissed", "1"); } catch (e) {}
+      });
+    }
+  }
+
+  // Moments lightbox
+  var lightbox = document.getElementById("momentsLightbox");
+  var lightboxCard = document.getElementById("lightboxCard");
+  if (lightbox && lightboxCard) {
+    var momentCards = Array.prototype.slice.call(document.querySelectorAll("[data-moment]"));
+    var lastFocused = null;
+
+    var openLightbox = function (card) {
+      lastFocused = document.activeElement;
+      var variantClass = Array.prototype.slice.call(card.classList).filter(function (c) {
+        return c.indexOf("moment-") === 0 && c !== "moment-card";
+      })[0];
+      var iconEl = card.querySelector(".moment-icon");
+      var captionEl = card.querySelector("figcaption");
+
+      lightboxCard.className = "lightbox-card" + (variantClass ? " " + variantClass : "");
+      lightboxCard.innerHTML = "";
+      if (iconEl) lightboxCard.appendChild(iconEl.cloneNode(true));
+      var figcaption = document.createElement("figcaption");
+      figcaption.textContent = captionEl ? captionEl.textContent : "";
+      lightboxCard.appendChild(figcaption);
+
+      lightbox.hidden = false;
+      document.body.style.overflow = "hidden";
+      var closeBtn = lightbox.querySelector(".lightbox-close");
+      if (closeBtn) closeBtn.focus();
+    };
+    var closeLightbox = function () {
+      lightbox.hidden = true;
+      document.body.style.overflow = "";
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    };
+
+    momentCards.forEach(function (card) {
+      card.addEventListener("click", function () { openLightbox(card); });
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openLightbox(card);
+        }
+      });
+    });
+    Array.prototype.slice.call(lightbox.querySelectorAll("[data-lightbox-close]")).forEach(function (el) {
+      el.addEventListener("click", closeLightbox);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+    });
+  }
 })();
