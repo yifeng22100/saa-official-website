@@ -7,39 +7,49 @@ open days, and mentorship.
 ## Structure
 
 ```
-docs/index.html        Single-page site (About, What We Do, Join Us, Moments, Connect)
-docs/css/styles.css     All styling — colors/fonts live in the CSS variables at the top
-docs/js/main.js         Nav, scroll-spy, carousel, tilt/parallax/marquee, count-up, scroll-reveal
-docs/assets/            Real SAA logo (logo.png) and favicon/icon mark (favicon.png)
-docs/.nojekyll          Tells GitHub Pages to serve the folder as-is, skip Jekyll processing
+index.html        Single-page site (About, What We Do, Join Us, Moments, Connect)
+css/styles.css     All styling — colors/fonts live in the CSS variables at the top
+js/main.js         Nav, scroll-spy, carousel, tilt/parallax/marquee, count-up, scroll-reveal
+assets/            Real SAA logo (logo.png) and favicon/icon mark (favicon.png)
+.nojekyll          Tells GitHub Pages to serve the repo as-is, skip Jekyll processing
 ```
 
-Everything lives under `docs/` because this repo's GitHub Pages source is
-configured as "Deploy from a branch" → `main` → `/docs`. **If that Pages
-source setting is ever changed to `/ (root)`, this folder must move back to
-the repo root to match**, or the site will 404.
+**These files must live wherever the repo's GitHub Pages source folder
+points** (Settings → Pages → Build and deployment → Branch). It's currently
+`main` → `/ (root)`, so everything sits at the repo root. `.nojekyll` must
+sit at that same source root — Jekyll only honors it there, not in a
+subfolder — or GitHub Pages' Jekyll build step will run anyway and, finding
+no recognizable site at the source root, silently fall back to rendering
+`README.md` through its default theme instead of the real site. (This
+repo hit both failure modes already: first the source was `/docs` while the
+site lived at the repo root — outright build failure; then, briefly, the
+site was moved into `docs/` while the source had been changed to root —
+build "succeeded" but served the wrong page. If the Pages source folder
+setting ever changes again, move these files to match it in the same
+commit, `.nojekyll` included.)
 
 No build step or dependencies. Fonts load from Google Fonts; the real logo
-lives in `docs/assets/`, everything else (nav icons, social icons) is inline SVG.
+lives in `assets/`, everything else (nav icons, social icons) is inline SVG.
 
 ## Running locally
 
-Open `docs/index.html` directly in a browser, or serve it:
+Open `index.html` directly in a browser, or serve it:
 
 ```bash
-cd docs && python3 -m http.server 8000
+python3 -m http.server 8000
 ```
 
 ## Deploying
 
 This is a plain static site — GitHub Pages is enabled on this repo, serving
-`main` → `/docs` (see Structure above for why the files live there). Every
-push to `main` triggers a `pages-build-deployment` Action; check
-Settings → Pages or the Actions tab if a change doesn't show up live — the
-`.nojekyll` file bypasses Jekyll processing entirely, which is what a
-previous deploy failure here was caused by (Jekyll's SCSS converter choking
-on a source-folder mismatch), so builds should just copy files straight
-through.
+`main` → `/ (root)`. Every push to `main` triggers a `pages-build-deployment`
+Action; check Settings → Pages or the Actions tab if a change doesn't show
+up live. Don't just check that the run succeeded — a "successful" build can
+still serve the wrong content if the source-folder/file-location mismatch
+above recurs, so also spot-check the live URL for a piece of real content
+(e.g. `assets/favicon.png` should 200, and the page `<title>` should not be
+"saa-official-website" with a Jekyll `generator` meta tag — that's the
+README-fallback theme, not this site).
 
 ## Interactive/visual pass
 
@@ -113,9 +123,9 @@ the original handoff and applied what could be verified:
 The site ships with clearly-scoped placeholders so the structure and design
 are ready to go live the moment real content is dropped in:
 
-- **`docs/css/styles.css` `:root`** — palette is still a Sunway-red-inspired
-  placeholder (`--maroon-*`, `--gold-*`). The real logo (`docs/assets/logo.png`,
-  `docs/assets/favicon.png`) is now in use in the header/footer/favicon, but
+- **`css/styles.css` `:root`** — palette is still a Sunway-red-inspired
+  placeholder (`--maroon-*`, `--gold-*`). The real logo (`assets/logo.png`,
+  `assets/favicon.png`) is now in use in the header/footer/favicon, but
   it's monochrome black-on-white ink, so it doesn't settle the brand color
   question — crawling turned up no reliable hex values either (see above).
   Swap the palette for the official brand colors once a brand guide or a
@@ -130,7 +140,7 @@ are ready to go live the moment real content is dropped in:
   stopgap.
 - **Footer contact** — no official contact email was available; currently
   points visitors to Instagram DM / Linktree. Replace the `TODO` in
-  `docs/index.html` once one exists.
+  `index.html` once one exists.
 - **`#open-day` section** — a reusable template for the Sunway Education
   Open Day Series, refreshed each intake. The August 2026 intake's
   `Series`/`Venue` are now filled in from the real registration forms;
